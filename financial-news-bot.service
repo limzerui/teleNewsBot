@@ -1,0 +1,17 @@
+[Unit]
+Description=Financial News Bot
+After=network.target
+
+[Service]
+Type=simple
+User=zrpi
+WorkingDirectory=/home/zrpi/Documents/teleNewsBot
+ExecStart=/home/zrpi/Documents/teleNewsBot/start_server.sh
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/zrpi/Documents/teleNewsBot/logs/systemd-output.log
+StandardError=append:/home/zrpi/Documents/teleNewsBot/logs/systemd-error.log
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target 
