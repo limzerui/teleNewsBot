@@ -198,40 +198,6 @@ The bot's behavior can be configured through environment variables in the `.env`
 - `TESTING_INTERVAL`: Minutes between summaries in test mode (default: 5)
 - `TARGET_CHANNEL`: The channel to monitor (default: 'marketfeed')
 
-## OLED Bus Display Integration
-
-If you're also running the OLED bus display on your Raspberry Pi, this project includes the necessary service file to manage it alongside the financial news bot.
-
-### Setting Up OLED Display Service
-
-1. Copy the service file to the systemd directory:
-```bash
-sudo cp ~/Documents/teleNewsBot/oled-bus-display.service /etc/systemd/system/
-```
-
-2. Enable and start the service:
-```bash
-sudo systemctl enable oled-bus-display
-sudo systemctl start oled-bus-display
-```
-
-### Managing OLED Display Issues
-
-If your OLED display starts behaving erratically or "going crazy," you can stop the service:
-
-```bash
-sudo systemctl stop oled-bus-display
-```
-
-To check if the service is running:
-```bash
-sudo systemctl status oled-bus-display
-```
-
-If you want to permanently disable the OLED display from starting at boot:
-```bash
-sudo systemctl disable oled-bus-display
-```
 
 ## Troubleshooting
 
@@ -251,29 +217,6 @@ cat .env
 Check for errors in the log files:
 ```bash
 cat ~/Documents/teleNewsBot/logs/systemd-error.log
-```
-
-### OLED Display Issues
-
-If the OLED display is showing erratic behavior:
-```bash
-# Stop the display service
-sudo systemctl stop oled-bus-display
-
-# Check if any related processes are still running
-ps aux | grep -i oled
-```
-
-If you find any lingering processes, you can kill them:
-```bash
-kill -9 <PID>
-```
-
-### Connectivity Issues
-
-Make sure your Raspberry Pi has an active internet connection:
-```bash
-ping -c 4 google.com
 ```
 
 ### SQLite Database Issues
